@@ -6,14 +6,20 @@ type CourseGoalListProps = {
 		title: string;
 		description: string;
 	};
+	onDeleteGoal: () => void;
 };
 
-export default function CourseGoalList({ goals }: CourseGoalListProps) {
+export default function CourseGoalList({
+	goals,
+	onDeleteGoal,
+}: CourseGoalListProps) {
 	return (
 		<ul>
 			{goals.map((goal) => (
 				<li key={goal.id}>
-					<CourseGoal title={goal.title}>{goal.description}</CourseGoal>
+					<CourseGoal id={goal.id} title={goal.title} onDelete={onDeleteGoal}>
+						{goal.description}
+					</CourseGoal>
 				</li>
 			))}
 		</ul>
